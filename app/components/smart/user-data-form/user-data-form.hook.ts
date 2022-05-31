@@ -3,8 +3,9 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from 'App';
 import {useReducer} from 'react';
 import {DefaultTheme, useTheme} from 'styled-components/native';
+import useAutentication from 'app/hooks/useAutentication';
 
-type State = {
+export type RegistrationForm = {
   name: string;
   secretQuestion: string;
   secretAnswer: string;
@@ -24,9 +25,10 @@ export type UseDataForm = {
   props: any;
   navigation: NativeStackNavigationProp<RootStackParamList>;
   handleNavigateSignin: () => void;
-  state: State;
+  state: RegistrationForm;
   dispatch: (params: Action) => void;
   theme: DefaultTheme;
+  register: (values: RegistrationForm) => void;
 };
 
 export default function useDataForm(props: any): UseDataForm {
@@ -42,7 +44,7 @@ export default function useDataForm(props: any): UseDataForm {
     password: '',
   };
 
-  const reducer = (state: State, action: Action) => {
+  const reducer = (state: RegistrationForm, action: Action) => {
     switch (action.type) {
       case 'updateName':
         return {...state, name: action.payload};
@@ -57,6 +59,7 @@ export default function useDataForm(props: any): UseDataForm {
 
   const [state, dispatch] = useReducer(reducer, initialState);
   const theme = useTheme();
+  const {register} = useAutentication();
 
   return {
     ...props,
@@ -64,5 +67,6 @@ export default function useDataForm(props: any): UseDataForm {
     state,
     dispatch,
     theme,
+    register,
   };
 }

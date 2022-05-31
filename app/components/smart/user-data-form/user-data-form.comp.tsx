@@ -8,6 +8,7 @@ export default function UserDataForm({
   state,
   dispatch,
   theme,
+  register,
 }: UseDataForm) {
   return (
     <Styled.MainWrapper>
@@ -41,6 +42,7 @@ export default function UserDataForm({
             onChangeText={value =>
               dispatch({type: 'updateSecretAnswer', payload: value})
             }
+            secureTextEntry
           />
         </View>
       </Styled.InputWrapper>
@@ -53,10 +55,15 @@ export default function UserDataForm({
           onChangeText={value =>
             dispatch({type: 'updatePassword', payload: value})
           }
+          secureTextEntry
         />
       </Styled.InputWrapper>
       <Styled.InputWrapper>
-        <Button color={theme.button.primary} title="Registrar" />
+        <Button
+          color={theme.button.primary}
+          title="Registrar"
+          onPress={() => register(state)}
+        />
       </Styled.InputWrapper>
       <Styled.InputWrapper>
         <Text>
