@@ -1,39 +1,36 @@
 import {useNavigation} from '@react-navigation/native';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from 'App';
 import {RegistrationForm} from 'app/components/smart/user-data-form/user-data-form.hook';
-import {useEffect} from 'react';
-import {ToastAndroid} from 'react-native';
-import {MMKV, useMMKVObject} from 'react-native-mmkv';
-
-const autenticationStorage = new MMKV({
-  id: 'autentication',
-});
-
-type Field = 'name' | 'secretQuestion' | 'secretAnswer' | 'password';
-
-type SetValue = (params: {field: Field; value: string}) => void;
-
-type GetValue = (field: Field) => any;
+import {Alert, ToastAndroid} from 'react-native';
+import useStorage from './useStorage';
 
 export default function useAutentication() {
-  const [autentication, setAutentication] = useMMKVObject<RegistrationForm>(
-    'credentials',
-    autenticationStorage,
-  );
+  const [autentication, setAutentication] = useStorage('credentials');
+  const navigation = useNavigation();
 
-  const navigation =
-    useNavigation<
-      NativeStackScreenProps<RootStackParamList, 'CreatePassword'>['navigation']
-    >();
-
-  const register = (values: RegistrationForm) => {
-    setAutentication(values);
-    ToastAndroid.show('Cadastro realizado com sucesso', ToastAndroid.LONG);
-    navigation.navigate('Signin');
+  const verifyPassword = (userInputPassword: String) => {
+    if (autentication?.password === userInputPassword) {
+      console.warn(true);
+    }
   };
 
-  useEffect(() => console.log(autentication?.name), [autentication]);
+  const registration = (registrationValues: RegistrationForm) => {
+    const formValuesKeys = Object.keys(
+      registrationValues,
+    ) as (keyof typeof registrationValues)[];
 
-  return {register};
+    const verifyValidForm = formValuesKeys.filter(formFieldKey =>
+      registrationValues[formFieldKey] ? true : false,
+    );
+
+    if (verifyValidForm.length === formValuesKeys.length) {
+      setAutentication(registrationValues);
+      ToastAndroid.show('Sucesso.', ToastAndroid.LONG);
+      navigation.navigate('Signin');
+      return;
+    }
+    // ToastAndroid.show('Preencha todos campos', ToastAndroid.LONG);
+    Alert.alert('Ops!', 'Você deve preencher todos os campos.');
+  };
+
+  return {registration, verifyPassword};
 }

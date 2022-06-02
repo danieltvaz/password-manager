@@ -8,11 +8,10 @@ export default function UserDataForm({
   state,
   dispatch,
   theme,
-  register,
+  registration,
 }: UseDataForm) {
   return (
     <Styled.MainWrapper>
-      <Styled.Logo source={require('app/assets/logo_transparent.png')} />
       <Styled.InputWrapper>
         <Styled.FormInput
           placeholder="Nome"
@@ -61,17 +60,9 @@ export default function UserDataForm({
       <Styled.InputWrapper>
         <Button
           color={theme.button.primary}
-          title="Registrar"
-          onPress={() => register(state)}
+          title="Salvar"
+          onPress={() => registration(state)}
         />
-      </Styled.InputWrapper>
-      <Styled.InputWrapper>
-        <Text>
-          {'Já possui uma senha? '}
-          <Styled.TextLink onPress={handleNavigateSignin}>
-            {'Acessar'}
-          </Styled.TextLink>
-        </Text>
       </Styled.InputWrapper>
     </Styled.MainWrapper>
   );
