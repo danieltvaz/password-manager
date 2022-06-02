@@ -24,13 +24,3 @@ export const InputWrapper = styled.View`
   width: 100%;
   margin-bottom: 30px;
 `;
-
-export const Logo = styled.Image`
-  width: 250px;
-  height: 250px;
-`;
-
-export const TextLink = styled.Text`
-  color: ${({theme}) => theme.text.primary};
-  font-size: 16px;
-`;
