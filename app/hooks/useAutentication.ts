@@ -4,7 +4,8 @@ import {Alert, ToastAndroid} from 'react-native';
 import useStorage from './useStorage';
 
 export default function useAutentication() {
-  const [autentication, setAutentication] = useStorage('credentials');
+  const [autentication, setAutentication] =
+    useStorage<RegistrationForm>('credentials');
   const navigation = useNavigation();
 
   const verifyPassword = (userInputPassword: String) => {
@@ -12,6 +13,8 @@ export default function useAutentication() {
       console.warn(true);
     }
   };
+
+  const alreadyRegistered = () => (autentication?.password ? true : false);
 
   const registration = (registrationValues: RegistrationForm) => {
     const formValuesKeys = Object.keys(
@@ -32,5 +35,5 @@ export default function useAutentication() {
     Alert.alert('Ops!', 'Você deve preencher todos os campos.');
   };
 
-  return {registration, verifyPassword};
+  return {registration, verifyPassword, alreadyRegistered};
 }
