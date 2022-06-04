@@ -15,9 +15,14 @@ import {Theme} from 'app/theme';
 type Props = {
   handleOnPress: () => void;
   theme: Theme;
+  alreadyRegistered: () => boolean;
 };
 
-export default function Signin({theme, handleOnPress}: Props) {
+export default function Signin({
+  theme,
+  handleOnPress,
+  alreadyRegistered,
+}: Props) {
   return (
     <StyledMainWrapper>
       <Logo />
@@ -27,12 +32,15 @@ export default function Signin({theme, handleOnPress}: Props) {
       <StyledSectionWrapper>
         <Button color={theme.button.primary} title="Acessar" />
       </StyledSectionWrapper>
-      <StyledSectionWrapper>
-        <StyledText>
-          {'Não tem uma? '}
-          <StyledTextLink onPress={handleOnPress}>{'Criar'}</StyledTextLink>
-        </StyledText>
-      </StyledSectionWrapper>
+
+      {alreadyRegistered() ? null : (
+        <StyledSectionWrapper>
+          <StyledText>
+            {'Não tem uma? '}
+            <StyledTextLink onPress={handleOnPress}>{'Criar'}</StyledTextLink>
+          </StyledText>
+        </StyledSectionWrapper>
+      )}
     </StyledMainWrapper>
   );
 }
