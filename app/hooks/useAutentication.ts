@@ -10,8 +10,9 @@ export default function useAutentication() {
 
   const verifyPassword = (userInputPassword: String) => {
     if (autentication?.password === userInputPassword) {
-      console.warn(true);
+      return true;
     }
+    return false;
   };
 
   const alreadyRegistered = () => (autentication?.password ? true : false);
