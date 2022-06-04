@@ -2,6 +2,8 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from 'App';
 import useAutentication from 'app/hooks/useAutentication';
+import {ChangeEvent, useState} from 'react';
+import {TextInputTextInputEventData, ToastAndroid} from 'react-native';
 import {useTheme} from 'styled-components/native';
 import {DefaultTheme} from 'styled-components/native';
 
@@ -14,13 +16,38 @@ export type UseSigninProps = {
 };
 
 export default function useSignin(props: UseSigninProps) {
-  const navigation = useNavigation<UseSigninProps['navigation']>();
+  const [inputPassword, setInputPassword] = useState('');
+
+  const handlePasswordInput = (value: string) => {
+    setInputPassword(value);
+  };
+
+  const {navigate, reset} = useNavigation<UseSigninProps['navigation']>();
 
   const theme = useTheme();
 
-  const handleOnPress = () => navigation.navigate('CreatePassword');
+  const handleOnPressSignup = () => navigate('CreatePassword');
 
-  const {alreadyRegistered} = useAutentication();
+  const {alreadyRegistered, verifyPassword} = useAutentication();
 
-  return {...props, handleOnPress, theme, alreadyRegistered};
+  const handleLogin = () => {
+    if (verifyPassword(inputPassword)) {
+      reset({
+        index: 0,
+        routes: [{name: 'Dashboard'}],
+      });
+    } else {
+      ToastAndroid.show('Senha incorreta.', ToastAndroid.LONG);
+    }
+  };
+
+  return {
+    ...props,
+    handleOnPressSignup,
+    theme,
+    alreadyRegistered,
+    handleLogin,
+    inputPassword,
+    handlePasswordInput,
+  };
 }

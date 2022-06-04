@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 
 import {
   StyledTextInput,
@@ -13,31 +13,48 @@ import {Button} from 'react-native';
 import {Theme} from 'app/theme';
 
 type Props = {
-  handleOnPress: () => void;
+  handleOnPressSignup: () => void;
   theme: Theme;
   alreadyRegistered: () => boolean;
+  handleLogin: () => void;
+  handlePasswordInput: (value: string) => void;
+  inputPassword: string;
 };
 
 export default function Signin({
   theme,
-  handleOnPress,
+  handleOnPressSignup,
   alreadyRegistered,
+  handleLogin,
+  handlePasswordInput,
+  inputPassword,
 }: Props) {
   return (
     <StyledMainWrapper>
       <Logo />
       <StyledSectionWrapper>
-        <StyledTextInput placeholder="Senha master" autoFocus />
+        <StyledTextInput
+          placeholder="Senha master"
+          autoFocus
+          onChangeText={handlePasswordInput}
+          value={inputPassword}
+        />
       </StyledSectionWrapper>
       <StyledSectionWrapper>
-        <Button color={theme.button.primary} title="Acessar" />
+        <Button
+          color={theme.button.primary}
+          title="Acessar"
+          onPress={handleLogin}
+        />
       </StyledSectionWrapper>
 
       {alreadyRegistered() ? null : (
         <StyledSectionWrapper>
           <StyledText>
             {'Não tem uma? '}
-            <StyledTextLink onPress={handleOnPress}>{'Criar'}</StyledTextLink>
+            <StyledTextLink onPress={handleOnPressSignup}>
+              {'Criar'}
+            </StyledTextLink>
           </StyledText>
         </StyledSectionWrapper>
       )}
