@@ -17,7 +17,6 @@ export default function Signin({
   handleLogin,
   handlePasswordInput,
   inputPassword,
-  navigate,
 }: SigninProps) {
   return (
     <StyledMainWrapper>
@@ -42,7 +41,7 @@ export default function Signin({
         <StyledSectionWrapper>
           <TextWithLink
             mainText="Esqueceu sua senha?"
-            linkText="Recuperar"
+            linkText="Alterar"
             link="CreatePassword"
           />
         </StyledSectionWrapper>
