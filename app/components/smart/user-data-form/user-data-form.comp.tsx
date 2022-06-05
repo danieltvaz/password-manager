@@ -1,5 +1,6 @@
+import TextInput from 'app/components/dumb/text-input';
 import React from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Button} from 'react-native';
 import * as Styled from './styles';
 import {UseDataForm} from './types';
 
@@ -12,7 +13,7 @@ export default function UserDataForm({
   return (
     <Styled.MainWrapper>
       <Styled.InputWrapper>
-        <Styled.FormInput
+        <TextInput
           placeholder="Nome"
           inlineImageLeft="person"
           inlineImagePadding={30}
@@ -23,7 +24,7 @@ export default function UserDataForm({
       </Styled.InputWrapper>
       <Styled.InputWrapper>
         <View>
-          <Styled.FormInput
+          <TextInput
             placeholder="Pergunta secreta"
             inlineImageLeft="question"
             inlineImagePadding={30}
@@ -32,7 +33,7 @@ export default function UserDataForm({
               dispatch({type: 'updateSecretQuestion', payload: value})
             }
           />
-          <Styled.FormInput
+          <TextInput
             placeholder="Resposta secreta"
             inlineImageLeft="answer"
             inlineImagePadding={30}
@@ -45,7 +46,7 @@ export default function UserDataForm({
         </View>
       </Styled.InputWrapper>
       <Styled.InputWrapper>
-        <Styled.FormInput
+        <TextInput
           placeholder="Senha"
           inlineImageLeft="lock"
           inlineImagePadding={30}

@@ -11,12 +11,6 @@ export const FormTitle = styled.Text`
   font-size: 16px;
 `;
 
-export const FormInput = styled.TextInput`
-  border-bottom-width: 1px;
-  border-bottom-color: ${({theme}) => theme.text.inactive};
-  width: 200px;
-`;
-
 export const InputWrapper = styled.View`
   flex-direction: row;
   align-items: center;
