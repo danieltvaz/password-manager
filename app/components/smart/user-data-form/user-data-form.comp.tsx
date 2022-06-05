@@ -1,10 +1,9 @@
 import React from 'react';
 import {View, Text, Button} from 'react-native';
 import * as Styled from './styles';
-import {UseDataForm} from './user-data-form.hook';
+import {UseDataForm} from './types';
 
 export default function UserDataForm({
-  handleNavigateSignin,
   state,
   dispatch,
   theme,
