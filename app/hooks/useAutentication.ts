@@ -1,25 +1,26 @@
 import {useNavigation} from '@react-navigation/native';
-import {RegistrationForm} from 'app/components/smart/user-data-form/types';
+import {UserSecurityInfo} from 'app/types/autentication';
 import {NavigationHook} from 'app/types/navigation';
 import {Alert, ToastAndroid} from 'react-native';
 import useStorage from './useStorage';
 
 export default function useAutentication() {
   const [autentication, setAutentication] =
-    useStorage<RegistrationForm>('credentials');
+    useStorage<UserSecurityInfo>('credentials');
 
   const navigation = useNavigation<NavigationHook>();
 
-  const verifyPassword = (userInputPassword: String) => {
-    if (autentication?.password === userInputPassword) {
-      return true;
-    }
-    return false;
-  };
+  const verifyPassword = (userInputPassword: String) =>
+    autentication?.password === userInputPassword ? true : false;
+
+  const verifySecretAnswer = (userAnswer: string) =>
+    userAnswer.toLowerCase() === autentication?.secretAnswer.toLocaleLowerCase()
+      ? true
+      : false;
 
   const alreadyRegistered = () => (autentication?.password ? true : false);
 
-  const registration = (registrationValues: RegistrationForm) => {
+  const registration = (registrationValues: UserSecurityInfo) => {
     const formValuesKeys = Object.keys(
       registrationValues,
     ) as (keyof typeof registrationValues)[];
@@ -38,5 +39,5 @@ export default function useAutentication() {
     Alert.alert('Ops!', 'Você deve preencher todos os campos.');
   };
 
-  return {registration, verifyPassword, alreadyRegistered};
+  return {registration, verifyPassword, alreadyRegistered, verifySecretAnswer};
 }
