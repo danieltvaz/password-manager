@@ -1,50 +1,24 @@
 import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from 'App';
 import useAutentication from 'app/hooks/useAutentication';
+import {NavigationHook} from 'app/types/navigation';
 import {useReducer} from 'react';
-import {DefaultTheme, useTheme} from 'styled-components/native';
-
-export type RegistrationForm = {
-  name: string;
-  secretQuestion: string;
-  secretAnswer: string;
-  password: string;
-};
-
-type Action = {
-  type:
-    | 'updateName'
-    | 'updateSecretQuestion'
-    | 'updateSecretAnswer'
-    | 'updatePassword';
-  payload: string;
-};
-
-export type UseDataForm = {
-  props: any;
-  navigation: NativeStackNavigationProp<RootStackParamList>;
-  handleNavigateSignin: () => void;
-  state: RegistrationForm;
-  dispatch: (params: Action) => void;
-  theme: DefaultTheme;
-  registration: (values: RegistrationForm) => void;
-};
+import {useTheme} from 'styled-components/native';
+import {UseDataForm, Action} from './types';
+import {UserSecurityInfo} from 'app/types/autentication';
 
 export default function useDataForm(props: any): UseDataForm {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<NavigationHook>();
 
   const handleNavigateSignin = () => navigation.navigate('Signin');
 
-  const initialState: RegistrationForm = {
+  const initialState: UserSecurityInfo = {
     name: '',
     secretQuestion: '',
     secretAnswer: '',
     password: '',
   };
 
-  const reducer = (state: RegistrationForm, action: Action) => {
+  const reducer = (state: UserSecurityInfo, action: Action) => {
     switch (action.type) {
       case 'updateName':
         return {...state, name: action.payload};

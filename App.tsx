@@ -6,12 +6,7 @@ import {ThemeProvider} from 'styled-components';
 import theme from './app/theme';
 import CreatePassword from './app/views/create-password/create-password.comp';
 import Dashboard from 'app/views/dashboard';
-
-export type RootStackParamList = {
-  Signin: undefined;
-  CreatePassword: undefined;
-  Dashboard: undefined;
-};
+import {RootStackParamList} from 'app/types/navigation';
 
 const App = () => {
   const Stack = createNativeStackNavigator<RootStackParamList>();

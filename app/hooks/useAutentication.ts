@@ -1,12 +1,14 @@
 import {useNavigation} from '@react-navigation/native';
-import {RegistrationForm} from 'app/components/smart/user-data-form/user-data-form.hook';
+import {RegistrationForm} from 'app/components/smart/user-data-form/types';
+import {NavigationHook} from 'app/types/navigation';
 import {Alert, ToastAndroid} from 'react-native';
 import useStorage from './useStorage';
 
 export default function useAutentication() {
   const [autentication, setAutentication] =
     useStorage<RegistrationForm>('credentials');
-  const navigation = useNavigation();
+
+  const navigation = useNavigation<NavigationHook>();
 
   const verifyPassword = (userInputPassword: String) => {
     if (autentication?.password === userInputPassword) {

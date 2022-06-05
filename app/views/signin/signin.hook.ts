@@ -1,28 +1,19 @@
 import {useNavigation} from '@react-navigation/native';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from 'App';
 import useAutentication from 'app/hooks/useAutentication';
+import {NavigationHook} from 'app/types/navigation';
 import {useState} from 'react';
 import {ToastAndroid} from 'react-native';
 import {useTheme} from 'styled-components/native';
-import {DefaultTheme} from 'styled-components/native';
+import {SigninProps} from './types';
 
-export type UseSigninProps = {
-  theme: DefaultTheme;
-  navigation: NativeStackScreenProps<
-    RootStackParamList,
-    'Signin'
-  >['navigation'];
-};
-
-export default function useSignin(props: UseSigninProps) {
+export default function useSignin(props: SigninProps) {
   const [inputPassword, setInputPassword] = useState('');
 
   const handlePasswordInput = (value: string) => {
     setInputPassword(value);
   };
 
-  const {navigate, reset} = useNavigation<UseSigninProps['navigation']>();
+  const {navigate, reset} = useNavigation<NavigationHook>();
 
   const theme = useTheme();
 
@@ -49,5 +40,6 @@ export default function useSignin(props: UseSigninProps) {
     handleLogin,
     inputPassword,
     handlePasswordInput,
+    navigate,
   };
 }

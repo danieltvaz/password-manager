@@ -1,34 +1,24 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 
 import {
   StyledTextInput,
   StyledMainWrapper,
   StyledSectionWrapper,
-  StyledTextLink,
-  StyledText,
 } from './styles';
-
 import {Logo} from 'app/components/dumb/logo';
 import {Button} from 'react-native';
-import {Theme} from 'app/theme';
+import TextWithLink from 'app/components/dumb/text-with-link';
 
-type Props = {
-  handleOnPressSignup: () => void;
-  theme: Theme;
-  alreadyRegistered: () => boolean;
-  handleLogin: () => void;
-  handlePasswordInput: (value: string) => void;
-  inputPassword: string;
-};
+import {SigninProps} from './types';
 
 export default function Signin({
   theme,
-  handleOnPressSignup,
   alreadyRegistered,
   handleLogin,
   handlePasswordInput,
   inputPassword,
-}: Props) {
+  navigate,
+}: SigninProps) {
   return (
     <StyledMainWrapper>
       <Logo />
@@ -48,14 +38,21 @@ export default function Signin({
         />
       </StyledSectionWrapper>
 
-      {alreadyRegistered() ? null : (
+      {alreadyRegistered() ? (
         <StyledSectionWrapper>
-          <StyledText>
-            {'Não tem uma? '}
-            <StyledTextLink onPress={handleOnPressSignup}>
-              {'Criar'}
-            </StyledTextLink>
-          </StyledText>
+          <TextWithLink
+            mainText="Esqueceu sua senha?"
+            linkText="Recuperar"
+            link="CreatePassword"
+          />
+        </StyledSectionWrapper>
+      ) : (
+        <StyledSectionWrapper>
+          <TextWithLink
+            mainText="Não tem uma?"
+            linkText="Criar"
+            link="CreatePassword"
+          />
         </StyledSectionWrapper>
       )}
     </StyledMainWrapper>
