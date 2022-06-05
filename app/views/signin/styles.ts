@@ -24,20 +24,4 @@ const StyledSectionWrapper = styled.View`
   text-align: center;
 `;
 
-const StyledText = styled.Text`
-  font-size: 16px;
-`;
-
-const StyledTextLink = styled.Text`
-  color: ${({theme}) => theme.text.primary};
-  font-size: 16px;
-`;
-
-export {
-  StyledTitle,
-  StyledTextInput,
-  StyledMainWrapper,
-  StyledSectionWrapper,
-  StyledTextLink,
-  StyledText,
-};
+export {StyledTitle, StyledTextInput, StyledMainWrapper, StyledSectionWrapper};
