@@ -2,8 +2,8 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from 'App';
 import useAutentication from 'app/hooks/useAutentication';
-import {ChangeEvent, useState} from 'react';
-import {TextInputTextInputEventData, ToastAndroid} from 'react-native';
+import {useState} from 'react';
+import {ToastAndroid} from 'react-native';
 import {useTheme} from 'styled-components/native';
 import {DefaultTheme} from 'styled-components/native';
 
