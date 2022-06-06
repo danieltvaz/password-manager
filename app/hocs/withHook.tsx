@@ -1,10 +1,10 @@
 import React from 'react';
 
 const withHook =
-  <ComponentProps, HookParams = unknown>(
+  <ComponentProps,>(
     Component: (props: ComponentProps) => JSX.Element,
-    hook: (params: HookParams) => ComponentProps,
-  ): ((props: HookParams) => JSX.Element) =>
+    hook: (params: ComponentProps) => ComponentProps,
+  ): ((props: ComponentProps) => JSX.Element) =>
   props =>
     <Component {...hook(props)} />;
 
