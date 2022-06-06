@@ -7,6 +7,7 @@ export type RootStackParamList = {
   Signin: undefined;
   CreatePassword: undefined;
   Dashboard: undefined;
+  RecoverPassword: undefined;
 };
 
 export type NavigationScreenProp = NativeStackScreenProps<RootStackParamList>;

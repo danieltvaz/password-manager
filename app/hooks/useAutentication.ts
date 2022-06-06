@@ -14,7 +14,8 @@ export default function useAutentication() {
     autentication?.password === userInputPassword ? true : false;
 
   const verifySecretAnswer = (userAnswer: string) =>
-    userAnswer.toLowerCase() === autentication?.secretAnswer.toLocaleLowerCase()
+    userAnswer.toLowerCase() ===
+    autentication?.secretAnswer?.toLocaleLowerCase()
       ? true
       : false;
 
@@ -39,5 +40,17 @@ export default function useAutentication() {
     Alert.alert('Ops!', 'Você deve preencher todos os campos.');
   };
 
-  return {registration, verifyPassword, alreadyRegistered, verifySecretAnswer};
+  const setNewPassword = (password: string) => {
+    setAutentication({...autentication, password});
+    ToastAndroid.show('Senha alterada com sucesso', ToastAndroid.LONG);
+  };
+
+  return {
+    registration,
+    verifyPassword,
+    alreadyRegistered,
+    verifySecretAnswer,
+    autentication,
+    setNewPassword,
+  };
 }

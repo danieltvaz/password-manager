@@ -7,6 +7,7 @@ import theme from './app/theme';
 import CreatePassword from './app/views/create-password/create-password.comp';
 import Dashboard from 'app/views/dashboard';
 import {RootStackParamList} from 'app/types/navigation';
+import RecoverPassword from 'app/views/recover-password';
 
 const App = () => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -17,6 +18,7 @@ const App = () => {
           <Stack.Screen name="Signin" component={Signin} />
           <Stack.Screen name="CreatePassword" component={CreatePassword} />
           <Stack.Screen name="Dashboard" component={Dashboard} />
+          <Stack.Screen name="RecoverPassword" component={RecoverPassword} />
         </Stack.Navigator>
       </ThemeProvider>
     </NavigationContainer>
