@@ -1,5 +1,3 @@
-import {RegistrationForm} from 'app/components/smart/user-data-form/user-data-form.hook';
-import {useEffect} from 'react';
 import {MMKV, useMMKVObject} from 'react-native-mmkv';
 
 const storageInstance = new MMKV();
