@@ -1,6 +1,6 @@
 export type UserSecurityInfo = {
-  name: string;
-  secretQuestion: string;
-  secretAnswer: string;
-  password: string;
+  name?: string;
+  secretQuestion?: string;
+  secretAnswer?: string;
+  password?: string;
 };
