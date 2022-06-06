@@ -27,6 +27,8 @@ export default function Signin({
           autoFocus
           onChangeText={handlePasswordInput}
           value={inputPassword}
+          onEndEditing={handleLogin}
+          secureTextEntry
         />
       </StyledSectionWrapper>
       <StyledSectionWrapper>
@@ -41,8 +43,8 @@ export default function Signin({
         <StyledSectionWrapper>
           <TextWithLink
             mainText="Esqueceu sua senha?"
-            linkText="Alterar"
-            link="CreatePassword"
+            linkText="Recuperar"
+            link="RecoverPassword"
           />
         </StyledSectionWrapper>
       ) : (
