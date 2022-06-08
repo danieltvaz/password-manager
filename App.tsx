@@ -17,8 +17,12 @@ const App = () => {
         <Stack.Navigator screenOptions={{headerShown: false}}>
           <Stack.Screen name="Signin" component={Signin} />
           <Stack.Screen name="CreatePassword" component={CreatePassword} />
-          <Stack.Screen name="Dashboard" component={Dashboard} />
           <Stack.Screen name="RecoverPassword" component={RecoverPassword} />
+          <Stack.Screen
+            name="Dashboard"
+            component={Dashboard}
+            options={{headerShown: true, headerTitle: 'Suas senhas'}}
+          />
         </Stack.Navigator>
       </ThemeProvider>
     </NavigationContainer>
