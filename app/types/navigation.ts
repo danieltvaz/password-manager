@@ -18,7 +18,7 @@ export type RootNavigationHook = NativeStackNavigationProp<RootStackParamList>;
 export type RootRoutes = keyof RootStackParamList;
 
 export type LoggedInStackParamList = {
-  Dashboard: undefined;
+  Passwords: undefined;
 };
 
 export type SignedInNavigationHook =

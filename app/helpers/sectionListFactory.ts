@@ -1,4 +1,4 @@
-import {dataMock} from 'app/views/dashboard/dashboard.comp';
+import {dataMock} from 'app/views/passwords/passwords.comp';
 
 type Data = typeof dataMock;
 

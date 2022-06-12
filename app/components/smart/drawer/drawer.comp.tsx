@@ -1,11 +1,11 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import Dashboard from 'app/views/dashboard';
+import Passwords from 'app/views/passwords';
 
 export default function Drawer() {
   const Drawer = createDrawerNavigator();
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="dashboard" component={Dashboard} />
+      <Drawer.Screen name="Passwords" component={Passwords} />
       <Drawer.Screen name="new-item" component={() => <div>oi</div>} />
     </Drawer.Navigator>
   );

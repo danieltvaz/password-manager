@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import {UserSecurityInfo} from 'app/types/autentication';
-import {NavigationHook} from 'app/types/navigation';
+import {RootNavigationHook} from 'app/types/navigation';
 import {Alert, ToastAndroid} from 'react-native';
 import useStorage from './useStorage';
 
@@ -8,7 +8,7 @@ export default function useAutentication() {
   const [autentication, setAutentication] =
     useStorage<UserSecurityInfo>('credentials');
 
-  const navigation = useNavigation<NavigationHook>();
+  const navigation = useNavigation<RootNavigationHook>();
 
   const verifyPassword = (userInputPassword: String) =>
     autentication?.password === userInputPassword ? true : false;

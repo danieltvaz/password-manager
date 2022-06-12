@@ -1,10 +1,9 @@
 import React from 'react';
 import PasswordItem from 'app/components/smart/password-item/password-item.comp';
-import {SectionList, Text} from 'react-native';
+import {SectionList} from 'react-native';
 import sectionListFactory from 'app/helpers/sectionListFactory';
 import {SectionHeaderText, SectionHeaderWrapper} from './styles';
 import EmptyList from 'app/components/dumb/empty-list/empty-list.comp';
-import {DashboardProps} from './dashboard.hook';
 
 export const dataMock = [
   {
@@ -15,7 +14,7 @@ export const dataMock = [
   },
 ];
 
-export default function Dashboard({navigation}: DashboardProps) {
+export default function Passwords() {
   return (
     <SectionList
       sections={sectionListFactory(dataMock)}
