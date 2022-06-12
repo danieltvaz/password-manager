@@ -6,12 +6,22 @@ import {
 export type RootStackParamList = {
   Signin: undefined;
   CreatePassword: undefined;
-  Dashboard: undefined;
+  NavigationLoggedIn: undefined;
   RecoverPassword: undefined;
 };
 
-export type NavigationScreenProp = NativeStackScreenProps<RootStackParamList>;
+export type RootNavigationScreenProp =
+  NativeStackScreenProps<RootStackParamList>;
 
-export type NavigationHook = NativeStackNavigationProp<RootStackParamList>;
+export type RootNavigationHook = NativeStackNavigationProp<RootStackParamList>;
 
-export type Routes = keyof RootStackParamList;
+export type RootRoutes = keyof RootStackParamList;
+
+export type LoggedInStackParamList = {
+  Dashboard: undefined;
+};
+
+export type SignedInNavigationHook =
+  NativeStackNavigationProp<LoggedInStackParamList>;
+
+export type LoggedInRoutes = keyof LoggedInStackParamList;

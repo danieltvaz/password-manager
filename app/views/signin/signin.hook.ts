@@ -25,7 +25,7 @@ export default function useSignin(props: SigninProps) {
     if (verifyPassword(inputPassword)) {
       reset({
         index: 0,
-        routes: [{name: 'Dashboard'}],
+        routes: [{name: 'NavigationLoggedIn'}],
       });
     } else {
       ToastAndroid.show('Senha incorreta.', ToastAndroid.LONG);
