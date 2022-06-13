@@ -1,27 +1,33 @@
 import React from 'react';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Passwords from 'app/views/passwords';
 import MenuButton from 'app/components/dumb/menu-button';
-import {Text, View} from 'react-native';
+import CreateNewItem from 'app/views/create-new-item';
 
 export default function NavigatorLoggedIn() {
-  const Drawer = createDrawerNavigator();
+  const Tab = createBottomTabNavigator();
 
   return (
-    <Drawer.Navigator
+    <Tab.Navigator
       initialRouteName="Passwords"
       screenOptions={{
         headerShown: true,
-        headerLeft: () => <MenuButton />,
         headerTitleAlign: 'center',
       }}>
-      <Drawer.Screen
+      <Tab.Screen
         component={Passwords}
-        name="Senhas"
+        name="Passwords"
         options={{
           headerTitle: 'Suas senhas',
         }}
       />
-    </Drawer.Navigator>
+      <Tab.Screen
+        component={CreateNewItem}
+        name="CreateNewItem"
+        options={{
+          headerTitle: 'Novo item',
+        }}
+      />
+    </Tab.Navigator>
   );
 }
