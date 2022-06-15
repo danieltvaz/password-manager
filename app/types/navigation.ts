@@ -18,7 +18,8 @@ export type RootNavigationHook = NativeStackNavigationProp<RootStackParamList>;
 export type RootRoutes = keyof RootStackParamList;
 
 export type LoggedInStackParamList = {
-  Passwords: undefined;
+  Vault: undefined;
+  CreateNewItem: undefined;
 };
 
 export type SignedInNavigationHook =

@@ -4,6 +4,7 @@ import {SectionList} from 'react-native';
 import sectionListFactory from 'app/helpers/sectionListFactory';
 import {SectionHeaderText, SectionHeaderWrapper} from './styles';
 import EmptyList from 'app/components/dumb/empty-list/empty-list.comp';
+import {PasswordStorage} from 'app/hooks/useVault';
 
 export const dataMock = [
   {
@@ -14,10 +15,10 @@ export const dataMock = [
   },
 ];
 
-export default function Passwords() {
+export default function Passwords({passwords}: {passwords: PasswordStorage[]}) {
   return (
     <SectionList
-      sections={sectionListFactory(dataMock)}
+      sections={sectionListFactory(passwords)}
       renderItem={({item}) => <PasswordItem item={item} />}
       renderSectionHeader={({section: {letter}}) => (
         <SectionHeaderWrapper>

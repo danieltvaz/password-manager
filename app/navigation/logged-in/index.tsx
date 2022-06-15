@@ -1,7 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Passwords from 'app/views/passwords';
-import MenuButton from 'app/components/dumb/menu-button';
 import CreateNewItem from 'app/views/create-new-item';
 
 export default function NavigatorLoggedIn() {
@@ -16,9 +15,10 @@ export default function NavigatorLoggedIn() {
       }}>
       <Tab.Screen
         component={Passwords}
-        name="Passwords"
+        name="Vault"
         options={{
           headerTitle: 'Suas senhas',
+          tabBarLabel: 'Cofre',
         }}
       />
       <Tab.Screen
@@ -26,6 +26,8 @@ export default function NavigatorLoggedIn() {
         name="CreateNewItem"
         options={{
           headerTitle: 'Novo item',
+          tabBarLabel: 'Novo item',
+          unmountOnBlur: true,
         }}
       />
     </Tab.Navigator>

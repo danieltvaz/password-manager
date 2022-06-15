@@ -1,10 +1,8 @@
-import {dataMock} from 'app/views/passwords/passwords.comp';
+import {PasswordStorage} from 'app/hooks/useVault';
 
-type Data = typeof dataMock;
-
-export default function sectionListFactory(data: Data) {
+export default function sectionListFactory(data: PasswordStorage[]) {
   const availableLetters = Array.from(
-    new Set(data.map(dataItem => dataItem.service.name[0].toLowerCase())),
+    new Set(data.map(dataItem => dataItem.title[0].toLowerCase())),
   );
   const sections = availableLetters
     .map(letter => ({
@@ -16,7 +14,7 @@ export default function sectionListFactory(data: Data) {
       data: [
         ...data.filter(
           dataItem =>
-            dataItem.service.name[0].toUpperCase() ===
+            dataItem.title[0].toUpperCase() ===
             sectionItem.letter.toUpperCase(),
         ),
       ],

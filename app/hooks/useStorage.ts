@@ -2,7 +2,7 @@ import {MMKV, useMMKVObject} from 'react-native-mmkv';
 
 const storageInstance = new MMKV();
 
-type Scope = 'credentials';
+type Scope = 'credentials' | 'passwords';
 
 export default function useStorage<T>(
   scope: Scope,
