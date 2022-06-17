@@ -18,7 +18,11 @@ export default function sectionListFactory(data: PasswordStorage[]) {
             sectionItem.letter.toUpperCase(),
         ),
       ],
-    }));
+    }))
+    .sort((a, b) => {
+      if (a.letter.toUpperCase() > b.letter.toUpperCase()) return 1;
+      else return -1;
+    });
 
   return sections;
 }
