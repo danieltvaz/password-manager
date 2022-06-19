@@ -6,6 +6,6 @@ export const Section = styled.View`
 `;
 
 export const TextLink = styled.Text`
-  color: ${({theme}) => theme.text.primary};
+  color: ${({theme}) => theme.text.active};
   font-size: 16px;
 `;

@@ -9,7 +9,7 @@ export const Wrapper = styled.ScrollView`
 export const FormTitle = styled.Text`
   font-size: 16px;
   text-align: left;
-  color: #000;
+  color: ${({theme}) => theme.text.primary};
   margin-bottom: 5px;
 `;
 
