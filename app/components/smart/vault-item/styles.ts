@@ -1,12 +1,13 @@
+import {Dimensions} from 'react-native';
 import styled from 'styled-components/native';
 
 export const MainWrapper = styled.View`
-  width: 100%;
+  max-width: 100%;
   height: 50px;
   display: flex;
   flex-direction: row;
   margin: 8px;
-  padding: 0 10px;
+  justify-content: flex-start;
 `;
 
 export const ServiceName = styled.Text`
@@ -20,5 +21,6 @@ export const ServiceLink = styled.Text`
 `;
 
 export const ServiceInfoWrapper = styled.View`
-  margin-left: 20px;
+  padding: 0 10px;
+  width: ${Dimensions.get('screen').width - 65}px;
 `;

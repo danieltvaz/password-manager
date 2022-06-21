@@ -8,8 +8,12 @@ export default function PasswordItem({item}: {item: PasswordStorage}) {
     <Styled.MainWrapper>
       <ServiceLogo serviceName={item.title} />
       <Styled.ServiceInfoWrapper>
-        <Styled.ServiceName>{item.title}</Styled.ServiceName>
-        <Styled.ServiceLink>{item.site}</Styled.ServiceLink>
+        <Styled.ServiceName ellipsizeMode="tail" numberOfLines={1}>
+          {item.title}
+        </Styled.ServiceName>
+        <Styled.ServiceLink ellipsizeMode="tail" numberOfLines={1}>
+          {item.site}
+        </Styled.ServiceLink>
       </Styled.ServiceInfoWrapper>
     </Styled.MainWrapper>
   );

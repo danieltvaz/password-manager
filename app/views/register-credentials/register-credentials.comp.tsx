@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Text} from 'react-native';
 import {Logo} from 'app/components/dumb/logo';
 import * as Styled from './styles';
-import {CreatePasswordProps} from './create-password.hook';
+import {CreatePasswordProps} from './register-credentials.hook';
 import TextInput from 'app/components/dumb/text-input';
 import TextWithLink from 'app/components/dumb/text-with-link';
 import {RootStackParamList} from 'app/types/navigation';
