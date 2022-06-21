@@ -4,12 +4,13 @@ export const Wrapper = styled.ScrollView`
   flex-direction: column;
   height: auto;
   padding: 30px;
+  background: ${({theme}) => theme.background.primary};
 `;
 
 export const FormTitle = styled.Text`
   font-size: 16px;
   text-align: left;
-  color: ${({theme}) => theme.text.primary};
+  color: ${({theme}) => theme.text.active};
   margin-bottom: 5px;
 `;
 

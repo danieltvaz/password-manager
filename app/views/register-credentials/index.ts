@@ -1,5 +1,5 @@
 import {withHook} from 'app/hocs';
-import CreatePassword from './create-password.comp';
-import useCreatePassword from './create-password.hook';
+import CreatePassword from './register-credentials.comp';
+import useCreatePassword from './register-credentials.hook';
 
 export default withHook(CreatePassword, useCreatePassword);

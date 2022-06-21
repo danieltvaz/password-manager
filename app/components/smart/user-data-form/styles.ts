@@ -5,6 +5,7 @@ export const MainWrapper = styled.View`
   height: auto;
   align-items: center;
   margin: 0 20px;
+  background: ${({theme}) => theme.background.primary};
 `;
 
 export const FormTitle = styled.Text`

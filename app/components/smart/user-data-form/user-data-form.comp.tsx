@@ -15,8 +15,6 @@ export default function UserDataForm({
       <Styled.InputWrapper>
         <TextInput
           placeholder="Nome"
-          inlineImageLeft="person"
-          inlineImagePadding={30}
           autoFocus
           value={state.name}
           onChangeText={value => dispatch({type: 'updateName', payload: value})}
@@ -26,8 +24,6 @@ export default function UserDataForm({
         <View>
           <TextInput
             placeholder="Pergunta secreta"
-            inlineImageLeft="question"
-            inlineImagePadding={30}
             value={state.secretQuestion}
             onChangeText={value =>
               dispatch({type: 'updateSecretQuestion', payload: value})
@@ -35,8 +31,6 @@ export default function UserDataForm({
           />
           <TextInput
             placeholder="Resposta secreta"
-            inlineImageLeft="answer"
-            inlineImagePadding={30}
             value={state.secretAnswer}
             onChangeText={value =>
               dispatch({type: 'updateSecretAnswer', payload: value})
@@ -48,8 +42,6 @@ export default function UserDataForm({
       <Styled.InputWrapper>
         <TextInput
           placeholder="Senha"
-          inlineImageLeft="lock"
-          inlineImagePadding={30}
           value={state.password}
           onChangeText={value =>
             dispatch({type: 'updatePassword', payload: value})
