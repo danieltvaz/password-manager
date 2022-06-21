@@ -1,20 +1,24 @@
 import {useNavigation} from '@react-navigation/native';
-import {NavigationHook, Routes} from 'app/types/navigation';
+import {
+  LoggedInStackParamList,
+  NavigateProps,
+  SignedInNavigationHook,
+} from 'app/types/navigation';
 import React from 'react';
 import {StyledTextLink, StyledText} from './styles';
 
 type Props = {
-  mainText: string;
+  mainText?: string;
   linkText: string;
-  link: Routes;
+  link: NavigateProps<LoggedInStackParamList>;
 };
 
 export default function TextWithLink({mainText, linkText, link}: Props) {
-  const {navigate} = useNavigation<NavigationHook>();
+  const {navigate} = useNavigation<SignedInNavigationHook>();
 
   return (
     <StyledText>
-      {`${mainText} `}
+      {mainText ? `${mainText} ` : null}
       <StyledTextLink onPress={() => navigate(link)}>{linkText}</StyledTextLink>
     </StyledText>
   );

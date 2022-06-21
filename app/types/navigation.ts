@@ -1,3 +1,4 @@
+import {ParamListBase} from '@react-navigation/native';
 import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
@@ -26,3 +27,16 @@ export type SignedInNavigationHook =
   NativeStackNavigationProp<LoggedInStackParamList>;
 
 export type LoggedInRoutes = keyof LoggedInStackParamList;
+
+export type NavigateProps<T> =
+  | {
+      key: keyof T;
+      params?: undefined;
+      merge?: boolean | undefined;
+    }
+  | {
+      name: keyof T;
+      key?: string | undefined;
+      params: undefined;
+      merge?: boolean | undefined;
+    };
