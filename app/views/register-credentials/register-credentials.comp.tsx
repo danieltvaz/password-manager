@@ -5,10 +5,20 @@ import * as Styled from './styles';
 import {CreatePasswordProps} from './register-credentials.hook';
 import TextInput from 'app/components/dumb/text-input';
 import TextWithLink from 'app/components/dumb/text-with-link';
-import {RootStackParamList} from 'app/types/navigation';
+import {
+  RootNavigationHook,
+  RootNavigationScreenProp,
+  RootStackParamList,
+} from 'app/types/navigation';
+import {CompositeNavigationProp} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+
+type ProfileScreenNavigationProp = CompositeNavigationProp<
+  NativeStackNavigationProp<RootStackParamList, 'CreatePassword'>,
+  NativeStackNavigationProp<RootStackParamList>
+>;
 
 export default function CreatePassword({
-  navigation,
   registration,
   state,
   dispatch,
