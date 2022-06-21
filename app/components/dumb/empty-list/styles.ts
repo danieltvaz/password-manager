@@ -8,6 +8,7 @@ export const Wrapper = styled.View`
 
 export const Message = styled.Text`
   font-size: 32px;
+  text-align: center;
 `;
 
 export const MessageLink = styled.Text`
