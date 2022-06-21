@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import useAutentication from 'app/hooks/useAutentication';
-import {NavigationHook} from 'app/types/navigation';
+import {RootNavigationHook} from 'app/types/navigation';
 import {useState} from 'react';
 import {ToastAndroid} from 'react-native';
 import {useTheme} from 'styled-components/native';
@@ -13,7 +13,7 @@ export default function useSignin(props: SigninProps) {
     setInputPassword(value);
   };
 
-  const {navigate, reset} = useNavigation<NavigationHook>();
+  const {navigate, reset} = useNavigation<RootNavigationHook>();
 
   const theme = useTheme();
 
