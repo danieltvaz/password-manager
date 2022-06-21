@@ -45,7 +45,6 @@ export default function RecoverPassword({
               onChangeText={newValue => setSecretAnswerInput(newValue)}
               placeholder={'Digite aqui a resposta'}
               autoFocus
-              inlineImageLeft="answer"
               onEndEditing={handleVerify}
             />
           </InputWrapper>

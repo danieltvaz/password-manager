@@ -1,13 +1,10 @@
 import React from 'react';
 
-import {
-  StyledTextInput,
-  StyledMainWrapper,
-  StyledSectionWrapper,
-} from './styles';
+import * as Styled from './styles';
 import {Logo} from 'app/components/dumb/logo';
 import {Button} from 'react-native';
 import TextWithLink from 'app/components/dumb/text-with-link';
+import TextInput from 'app/components/dumb/text-input';
 
 import {SigninProps} from './types';
 
@@ -19,10 +16,10 @@ export default function Signin({
   inputPassword,
 }: SigninProps) {
   return (
-    <StyledMainWrapper>
+    <Styled.StyledMainWrapper>
       <Logo />
-      <StyledSectionWrapper>
-        <StyledTextInput
+      <Styled.StyledSectionWrapper>
+        <TextInput
           placeholder="Senha master"
           autoFocus
           onChangeText={handlePasswordInput}
@@ -30,32 +27,32 @@ export default function Signin({
           onEndEditing={handleLogin}
           secureTextEntry
         />
-      </StyledSectionWrapper>
-      <StyledSectionWrapper>
+      </Styled.StyledSectionWrapper>
+      <Styled.StyledSectionWrapper>
         <Button
           color={theme.button.primary}
           title="Acessar"
           onPress={handleLogin}
         />
-      </StyledSectionWrapper>
+      </Styled.StyledSectionWrapper>
 
       {alreadyRegistered() ? (
-        <StyledSectionWrapper>
+        <Styled.StyledSectionWrapper>
           <TextWithLink
             mainText="Esqueceu sua senha?"
             linkText="Recuperar"
             link="RecoverPassword"
           />
-        </StyledSectionWrapper>
+        </Styled.StyledSectionWrapper>
       ) : (
-        <StyledSectionWrapper>
+        <Styled.StyledSectionWrapper>
           <TextWithLink
             mainText="Não tem uma?"
             linkText="Criar"
             link="CreatePassword"
           />
-        </StyledSectionWrapper>
+        </Styled.StyledSectionWrapper>
       )}
-    </StyledMainWrapper>
+    </Styled.StyledMainWrapper>
   );
 }
