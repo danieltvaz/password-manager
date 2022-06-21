@@ -1,5 +1,5 @@
 import React from 'react';
-import PasswordItem from 'app/components/smart/vault-item/password-item.comp';
+import PasswordItem from 'app/components/dumb/vault-item';
 import {SectionList} from 'react-native';
 import sectionListFactory from 'app/helpers/sectionListFactory';
 import {SectionHeaderText, SectionHeaderWrapper} from './styles';
