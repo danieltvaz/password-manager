@@ -1,6 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Passwords from 'app/views/passwords';
+import Vault from 'app/views/vault';
 import CreateNewItem from 'app/views/create-new-item';
 import Icon from 'app/components/dumb/bottom-tab-icon';
 import {useTheme} from 'styled-components/native';
@@ -28,7 +28,7 @@ export default function NavigatorLoggedIn() {
         },
       }}>
       <Tab.Screen
-        component={Passwords}
+        component={Vault}
         name="Vault"
         options={{
           headerTitle: 'Cofre',
