@@ -1,9 +1,8 @@
 import React from 'react';
-
 import TextInput from 'app/components/dumb/text-input';
 import * as Styled from './styles';
 import {NewItemFormProps} from './create-new-item.hook';
-import {Button} from 'react-native';
+import SButton from 'app/components/dumb/button';
 
 export default function CreateNewItem({
   state,
@@ -12,7 +11,9 @@ export default function CreateNewItem({
   navigation,
 }: NewItemFormProps) {
   navigation.setOptions({
-    headerRight: () => <Button title="Salvar" onPress={handleSubmit} />,
+    headerRight: () => (
+      <SButton title="Adicionar" onPress={handleSubmit} role="primary" style={{marginRight: 10}} />
+    ),
   });
 
   return (
@@ -59,27 +60,21 @@ export default function CreateNewItem({
       <Styled.InputWrapper>
         <Styled.FormTitle>{'Pergunta de segurança'}</Styled.FormTitle>
         <TextInput
-          onChangeText={value =>
-            dispatch?.({type: 'securityQuestion', payload: value})
-          }
+          onChangeText={value => dispatch?.({type: 'securityQuestion', payload: value})}
           value={state?.securityQuestion}
         />
       </Styled.InputWrapper>
       <Styled.InputWrapper>
         <Styled.FormTitle>{'Resposta de segurança'}</Styled.FormTitle>
         <TextInput
-          onChangeText={value =>
-            dispatch?.({type: 'securityAnswer', payload: value})
-          }
+          onChangeText={value => dispatch?.({type: 'securityAnswer', payload: value})}
           value={state?.securityAnswer}
         />
       </Styled.InputWrapper>
       <Styled.InputWrapper>
         <Styled.FormTitle>{'Observações'}</Styled.FormTitle>
         <TextInput
-          onChangeText={value =>
-            dispatch?.({type: 'observations', payload: value})
-          }
+          onChangeText={value => dispatch?.({type: 'observations', payload: value})}
           value={state?.observations}
         />
       </Styled.InputWrapper>

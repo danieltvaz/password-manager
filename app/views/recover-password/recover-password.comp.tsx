@@ -1,9 +1,10 @@
 import {Logo} from 'app/components/dumb/logo';
 import StyledTextInput from 'app/components/dumb/text-input';
 import React from 'react';
-import {Button, Text} from 'react-native';
+import {Text} from 'react-native';
 import {InputWrapper, MainWrapper} from './styles';
 import {RecoverPasswordProps} from './types';
+import SButton from 'app/components/dumb/button';
 
 export default function RecoverPassword({
   secretAnswerInput,
@@ -31,7 +32,7 @@ export default function RecoverPassword({
             />
           </InputWrapper>
           <InputWrapper>
-            <Button title="Salvar" onPress={saveNewPassword} />
+            <SButton role="primary" title="Salvar" onPress={saveNewPassword} />
           </InputWrapper>
         </>
       ) : (
@@ -49,7 +50,7 @@ export default function RecoverPassword({
             />
           </InputWrapper>
           <InputWrapper>
-            <Button title="Verificar" onPress={handleVerify} />
+            <SButton role="primary" title="Verificar" onPress={handleVerify} />
           </InputWrapper>
         </>
       )}

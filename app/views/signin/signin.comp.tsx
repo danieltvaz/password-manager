@@ -2,9 +2,9 @@ import React from 'react';
 
 import * as Styled from './styles';
 import {Logo} from 'app/components/dumb/logo';
-import {Button} from 'react-native';
 import TextWithLink from 'app/components/dumb/text-with-link';
 import TextInput from 'app/components/dumb/text-input';
+import SButton from 'app/components/dumb/button';
 
 import {SigninProps} from './types';
 
@@ -29,11 +29,7 @@ export default function Signin({
         />
       </Styled.StyledSectionWrapper>
       <Styled.StyledSectionWrapper>
-        <Button
-          color={theme.button.primary}
-          title="Acessar"
-          onPress={handleLogin}
-        />
+        <SButton role="primary" title="Acessar" onPress={handleLogin} />
       </Styled.StyledSectionWrapper>
 
       {alreadyRegistered() ? (
@@ -46,11 +42,7 @@ export default function Signin({
         </Styled.StyledSectionWrapper>
       ) : (
         <Styled.StyledSectionWrapper>
-          <TextWithLink
-            mainText="Não tem uma?"
-            linkText="Criar"
-            link="CreatePassword"
-          />
+          <TextWithLink mainText="Não tem uma?" linkText="Criar" link="CreatePassword" />
         </Styled.StyledSectionWrapper>
       )}
     </Styled.StyledMainWrapper>
