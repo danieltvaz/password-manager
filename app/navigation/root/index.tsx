@@ -17,7 +17,6 @@ export default function RootNavigation() {
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-          headerTitleAlign: 'center',
           contentStyle: {backgroundColor: theme.background.primary},
         }}>
         <Stack.Screen name="Signin" component={Signin} />

@@ -14,17 +14,19 @@ export default function NavigatorLoggedIn() {
       initialRouteName="Passwords"
       screenOptions={{
         headerShown: true,
-        headerTitleAlign: 'center',
         headerStyle: {
-          backgroundColor: theme.background.secondary,
+          backgroundColor: theme.background.active,
         },
-        headerTintColor: theme.text.primary,
+        headerTitleStyle: {
+          fontSize: 16,
+        },
+        headerTintColor: theme.text.inverted,
         tabBarStyle: {
           justifyContent: 'flex-end',
           backgroundColor: theme.background.secondary,
         },
         tabBarLabelStyle: {
-          fontSize: 14,
+          fontSize: 12,
         },
       }}>
       <Tab.Screen
@@ -42,9 +44,7 @@ export default function NavigatorLoggedIn() {
         options={{
           headerTitle: 'Foo',
           tabBarLabel: 'Favoritos',
-          tabBarIcon: ({focused}) => (
-            <Icon name="heart-outline" active={focused} />
-          ),
+          tabBarIcon: ({focused}) => <Icon name="heart-outline" active={focused} />,
         }}
       />
       <Tab.Screen
@@ -62,9 +62,7 @@ export default function NavigatorLoggedIn() {
         options={{
           headerTitle: 'Novo item',
           tabBarLabel: 'Ajuda',
-          tabBarIcon: ({focused}) => (
-            <Icon name="help-circle-outline" active={focused} />
-          ),
+          tabBarIcon: ({focused}) => <Icon name="help-circle-outline" active={focused} />,
         }}
       />
       <Tab.Screen
@@ -73,9 +71,7 @@ export default function NavigatorLoggedIn() {
         options={{
           headerTitle: 'Novo item',
           tabBarLabel: 'Perfil',
-          tabBarIcon: ({focused}) => (
-            <Icon name="account-settings-outline" active={focused} />
-          ),
+          tabBarIcon: ({focused}) => <Icon name="account-settings-outline" active={focused} />,
         }}
       />
     </Tab.Navigator>
