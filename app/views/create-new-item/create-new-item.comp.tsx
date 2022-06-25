@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import TextInput from 'app/components/dumb/text-input';
 import * as Styled from './styles';
 import {NewItemFormProps} from './create-new-item.hook';
@@ -10,11 +10,18 @@ export default function CreateNewItem({
   handleSubmit,
   navigation,
 }: NewItemFormProps) {
-  navigation.setOptions({
-    headerRight: () => (
-      <SButton title="Adicionar" onPress={handleSubmit} role="primary" style={{marginRight: 10}} />
-    ),
-  });
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <SButton
+          title="Adicionar"
+          onPress={handleSubmit}
+          role="primary"
+          style={{marginRight: 10}}
+        />
+      ),
+    });
+  }, []);
 
   return (
     <Styled.Wrapper>
