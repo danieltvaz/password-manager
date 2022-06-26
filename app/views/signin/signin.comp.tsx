@@ -26,25 +26,16 @@ export default function Signin({
           value={inputPassword}
           onEndEditing={handleLogin}
           secureTextEntry
+          style={{textAlign: 'center'}}
         />
       </Styled.StyledSectionWrapper>
       <Styled.StyledSectionWrapper>
         <SButton role="primary" title="Acessar" onPress={handleLogin} />
       </Styled.StyledSectionWrapper>
 
-      {alreadyRegistered() ? (
-        <Styled.StyledSectionWrapper>
-          <TextWithLink
-            mainText="Esqueceu sua senha?"
-            linkText="Recuperar"
-            link="RecoverPassword"
-          />
-        </Styled.StyledSectionWrapper>
-      ) : (
-        <Styled.StyledSectionWrapper>
-          <TextWithLink mainText="Não tem uma?" linkText="Criar" link="CreatePassword" />
-        </Styled.StyledSectionWrapper>
-      )}
+      <Styled.StyledSectionWrapper>
+        <TextWithLink mainText="Esqueceu sua senha?" linkText="Recuperar" link="RecoverPassword" />
+      </Styled.StyledSectionWrapper>
     </Styled.StyledMainWrapper>
   );
 }

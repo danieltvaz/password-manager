@@ -30,11 +30,6 @@ export default function CreatePassword({registration, state, dispatch}: CreatePa
           onChangeText={value => dispatch({field: 'password', payload: value})}
         />
 
-        <Text>
-          {'Já possui uma senha? '}
-          <TextWithLink<RootStackParamList> link="Signin" linkText="Login" />
-        </Text>
-
         <SButton role="primary" title="Cadastrar" onPress={() => registration(state)} />
       </Styled.Section>
     </Styled.Wrapper>

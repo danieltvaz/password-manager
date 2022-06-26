@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import useAutentication from 'app/hooks/useAutentication';
 import {RootNavigationHook} from 'app/types/navigation';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {ToastAndroid} from 'react-native';
 import {useTheme} from 'styled-components/native';
 import {SigninProps} from './types';
@@ -31,6 +31,10 @@ export default function useSignin(props: SigninProps) {
       ToastAndroid.show('Senha incorreta.', ToastAndroid.LONG);
     }
   };
+
+  useEffect(() => {
+    alreadyRegistered() ? null : navigate('CreatePassword');
+  }, []);
 
   return {
     ...props,
