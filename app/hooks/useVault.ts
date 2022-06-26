@@ -1,3 +1,4 @@
+import {useEffect} from 'react';
 import useStorage from './useStorage';
 
 export type PasswordStorage = {
@@ -15,7 +16,7 @@ export default function useVault() {
   const [passwords, setPasswords] = useStorage<PasswordStorage[]>('passwords');
 
   function newPassword(password: PasswordStorage) {
-    setPasswords([...(passwords as PasswordStorage[]), password]);
+    setPasswords([...(passwords ? passwords : []), password]);
   }
 
   return {newPassword, passwords};

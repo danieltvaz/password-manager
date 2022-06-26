@@ -1,7 +1,7 @@
 import {PasswordStorage} from 'app/hooks/useVault';
 
 export default function sectionListFactory(data: PasswordStorage[]) {
-  if (data) {
+  try {
     const availableLetters = Array.from(
       new Set(data?.map(dataItem => dataItem.title[0].toLowerCase())),
     );
@@ -14,9 +14,7 @@ export default function sectionListFactory(data: PasswordStorage[]) {
         ...sectionItem,
         data: [
           ...data.filter(
-            dataItem =>
-              dataItem.title[0].toUpperCase() ===
-              sectionItem.letter.toUpperCase(),
+            dataItem => dataItem.title[0].toUpperCase() === sectionItem.letter.toUpperCase(),
           ),
         ],
       }))
@@ -24,8 +22,8 @@ export default function sectionListFactory(data: PasswordStorage[]) {
         if (a.letter.toUpperCase() > b.letter.toUpperCase()) return 1;
         else return -1;
       });
-
     return sections;
+  } catch {
+    return [];
   }
-  return [];
 }

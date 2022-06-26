@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import useVault, {PasswordStorage} from 'app/hooks/useVault';
 import {SignedInNavigationHook} from 'app/types/navigation';
-import {Dispatch, useReducer} from 'react';
+import {Dispatch, useEffect, useReducer} from 'react';
 import {ToastAndroid} from 'react-native';
 
 const initialState = {
@@ -34,7 +34,7 @@ export default function useCreateNewItem() {
     return {...state, [action.type]: action.payload};
   }
 
-  const {newPassword, passwords} = useVault();
+  const {newPassword} = useVault();
 
   const navigation = useNavigation<SignedInNavigationHook>();
 
