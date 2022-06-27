@@ -1,8 +1,4 @@
-import {ParamListBase} from '@react-navigation/native';
-import {
-  NativeStackNavigationProp,
-  NativeStackScreenProps,
-} from '@react-navigation/native-stack';
+import {NativeStackNavigationProp, NativeStackScreenProps} from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
   Signin: undefined;
@@ -11,8 +7,7 @@ export type RootStackParamList = {
   RecoverPassword: undefined;
 };
 
-export type RootNavigationScreenProp =
-  NativeStackScreenProps<RootStackParamList>;
+export type RootNavigationScreenProp = NativeStackScreenProps<RootStackParamList>;
 
 export type RootNavigationHook = NativeStackNavigationProp<RootStackParamList>;
 
@@ -23,8 +18,7 @@ export type LoggedInStackParamList = {
   CreateNewItem: undefined;
 };
 
-export type SignedInNavigationHook =
-  NativeStackNavigationProp<LoggedInStackParamList>;
+export type SignedInNavigationHook = NativeStackNavigationProp<LoggedInStackParamList>;
 
 export type LoggedInRoutes = keyof LoggedInStackParamList;
 

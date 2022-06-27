@@ -1,4 +1,3 @@
-import {useEffect} from 'react';
 import useStorage from './useStorage';
 
 export type PasswordStorage = {

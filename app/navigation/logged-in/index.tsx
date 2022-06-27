@@ -5,7 +5,7 @@ import CreateNewItem from 'app/views/create-new-item';
 import Icon from 'app/components/dumb/bottom-tab-icon';
 import {useTheme} from 'styled-components/native';
 
-export default function NavigatorLoggedIn() {
+export default function LoggedIn() {
   const Tab = createBottomTabNavigator();
   const theme = useTheme();
 
