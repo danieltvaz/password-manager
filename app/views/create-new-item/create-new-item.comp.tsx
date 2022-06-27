@@ -16,12 +16,12 @@ export default function CreateNewItem({
         <SButton
           title="Adicionar"
           onPress={handleSubmit}
-          role="primary"
+          buttonRole="primary"
           style={{marginRight: 10}}
         />
       ),
     });
-  }, [state]);
+  }, [state, navigation, handleSubmit]);
 
   return (
     <Styled.Wrapper>

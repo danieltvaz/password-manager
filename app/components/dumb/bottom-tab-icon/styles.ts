@@ -1,17 +1,14 @@
 import {ComponentType} from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import styled, {DefaultTheme} from 'styled-components/native';
-import {
-  BottomTabIconProps,
-  BottomTabIconWrapperProps,
-} from './bottom-tab-icon.comp';
+import {BottomTabIconProps, BottomTabIconWrapperProps} from './bottom-tab-icon.comp';
 import {View} from 'react-native';
 
-const ICON_MAIN_STYLES = (theme: DefaultTheme) => `
+const ICON_MAIN_STYLES = () => `
 font-size: 48px;
 `;
 
-const ICON_SECONDARY_STYLES = (theme: DefaultTheme) => ``;
+const ICON_SECONDARY_STYLES = () => '';
 
 const ICON_WRAPPER_MAIN_STYLES = (theme: DefaultTheme) => `
 transform: translate(0, -8px);
@@ -24,7 +21,7 @@ shadow-color: ${theme.shadow.primary};
 
 `;
 
-const ICON_WRAPPER_SECONDARY_STYLES = (theme: DefaultTheme) => ``;
+const ICON_WRAPPER_SECONDARY_STYLES = () => '';
 
 const ICON_EXTERNAL_WRAPPER_MAIN = (theme: DefaultTheme) => `
 width: 64px;
@@ -39,28 +36,18 @@ left: 8px;
 
 `;
 
-const ICON_EXTERNAL_WRAPPER_SECONDARY = (theme: DefaultTheme) => ``;
+const ICON_EXTERNAL_WRAPPER_SECONDARY = () => '';
 
 export const StyledIcon = styled<ComponentType<BottomTabIconProps>>(Icon)`
   font-size: 32px;
-  ${({main, theme}) =>
-    main ? ICON_MAIN_STYLES(theme) : ICON_SECONDARY_STYLES(theme)}
+  ${({main}) => (main ? ICON_MAIN_STYLES() : ICON_SECONDARY_STYLES())}
 `;
 
-export const IconWrapper = styled<ComponentType<BottomTabIconWrapperProps>>(
-  View,
-)`
-  ${({main, theme}) =>
-    main
-      ? ICON_WRAPPER_MAIN_STYLES(theme)
-      : ICON_WRAPPER_SECONDARY_STYLES(theme)}
+export const IconWrapper = styled<ComponentType<BottomTabIconWrapperProps>>(View)`
+  ${({main, theme}) => (main ? ICON_WRAPPER_MAIN_STYLES(theme) : ICON_WRAPPER_SECONDARY_STYLES())}
 `;
 
-export const ExternalWrapper = styled<ComponentType<BottomTabIconWrapperProps>>(
-  View,
-)`
+export const ExternalWrapper = styled<ComponentType<BottomTabIconWrapperProps>>(View)`
   ${({main, theme}) =>
-    main
-      ? ICON_EXTERNAL_WRAPPER_MAIN(theme)
-      : ICON_EXTERNAL_WRAPPER_SECONDARY(theme)}
+    main ? ICON_EXTERNAL_WRAPPER_MAIN(theme) : ICON_EXTERNAL_WRAPPER_SECONDARY()}
 `;

@@ -9,11 +9,10 @@ import SButton from 'app/components/dumb/button';
 import {SigninProps} from './types';
 
 export default function Signin({
-  theme,
-  alreadyRegistered,
   handleLogin,
   handlePasswordInput,
   inputPassword,
+  login,
 }: SigninProps) {
   return (
     <Styled.StyledMainWrapper>
@@ -30,7 +29,7 @@ export default function Signin({
         />
       </Styled.StyledSectionWrapper>
       <Styled.StyledSectionWrapper>
-        <SButton role="primary" title="Acessar" onPress={handleLogin} />
+        <SButton buttonRole="primary" title="Acessar" onPress={() => login(inputPassword)} />
       </Styled.StyledSectionWrapper>
 
       <Styled.StyledSectionWrapper>

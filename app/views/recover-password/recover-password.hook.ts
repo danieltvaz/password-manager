@@ -8,13 +8,14 @@ export default function useRecoverPassword(props: any) {
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
   const [newPasswordInput, setNewPasswordInput] = useState('');
 
-  const {autentication, verifySecretAnswer, setNewPassword} =
-    useAutentication();
+  const {autentication, verifySecretAnswer, setNewPassword} = useAutentication();
 
   const {navigate} = useNavigation<RootNavigationHook>();
 
   const handleVerify = () => {
-    if (verifySecretAnswer(secretAnswerInput)) setIsCorrectAnswer(true);
+    if (verifySecretAnswer(secretAnswerInput)) {
+      setIsCorrectAnswer(true);
+    }
   };
 
   const saveNewPassword = () => {

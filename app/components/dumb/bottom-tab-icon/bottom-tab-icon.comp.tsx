@@ -40,7 +40,7 @@ export default function BottomTabIcon(props: BottomTabIconProps) {
 
   return (
     <>
-      <Styled.ExternalWrapper main={props.main}></Styled.ExternalWrapper>
+      <Styled.ExternalWrapper main={props.main} />
       <Styled.IconWrapper main={props.main}>
         <Styled.StyledIcon {...props} color={colorHandler()} />
       </Styled.IconWrapper>

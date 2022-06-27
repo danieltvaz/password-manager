@@ -5,8 +5,7 @@ import {Alert, ToastAndroid} from 'react-native';
 import useStorage from './useStorage';
 
 export default function useAutentication() {
-  const [autentication, setAutentication] =
-    useStorage<UserSecurityInfo>('credentials');
+  const [autentication, setAutentication] = useStorage<UserSecurityInfo>('credentials');
 
   const navigation = useNavigation<RootNavigationHook>();
 
@@ -14,17 +13,12 @@ export default function useAutentication() {
     autentication?.password === userInputPassword ? true : false;
 
   const verifySecretAnswer = (userAnswer: string) =>
-    userAnswer.toLowerCase() ===
-    autentication?.secretAnswer?.toLocaleLowerCase()
-      ? true
-      : false;
+    userAnswer.toLowerCase() === autentication?.secretAnswer?.toLocaleLowerCase() ? true : false;
 
   const alreadyRegistered = () => (autentication?.password ? true : false);
 
   const registration = (registrationValues: UserSecurityInfo) => {
-    const formValuesKeys = Object.keys(
-      registrationValues,
-    ) as (keyof typeof registrationValues)[];
+    const formValuesKeys = Object.keys(registrationValues) as (keyof typeof registrationValues)[];
 
     const verifyValidForm = formValuesKeys.filter(formFieldKey =>
       registrationValues[formFieldKey] ? true : false,

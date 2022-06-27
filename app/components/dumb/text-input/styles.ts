@@ -6,4 +6,5 @@ export const StyledTextInput = styled.TextInput`
   min-width: 100%;
   padding: 0;
   color: ${({theme}) => theme.text.primary};
+  text-align: center;
 `;
