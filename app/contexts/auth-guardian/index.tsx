@@ -25,7 +25,7 @@ export default function AuthGuardian({children}: {children: ReactNode}) {
 
   useEffect(() => {
     const appStateListener = AppState.addEventListener('change', nextState => {
-      if (appState.current.match(/inactive|background/) && nextState === 'active') {
+      if (nextState === 'background') {
         logout();
       }
 
