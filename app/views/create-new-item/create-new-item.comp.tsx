@@ -14,7 +14,7 @@ export default function CreateNewItem({
     navigation.setOptions({
       headerRight: () => (
         <SButton
-          title="Adicionar"
+          title="Salvar"
           onPress={handleSubmit}
           buttonRole="primary"
           style={{marginRight: 10}}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator, BottomTabBar} from '@react-navigation/bottom-tabs';
 import Vault from 'app/views/vault';
 import CreateNewItem from 'app/views/create-new-item';
 import Icon from 'app/components/dumb/bottom-tab-icon';
@@ -22,13 +22,16 @@ export default function LoggedIn() {
         },
         headerTintColor: theme.text.inverted,
         tabBarStyle: {
-          justifyContent: 'flex-end',
           backgroundColor: theme.background.secondary,
+          position: 'absolute',
         },
         tabBarLabelStyle: {
           fontSize: 12,
         },
-      }}>
+      }}
+      tabBar={props => (
+        <BottomTabBar {...props} state={{...props.state, routes: props.state.routes.slice(0, 2)}} />
+      )}>
       <Tab.Screen
         component={Vault}
         name="Vault"
@@ -38,40 +41,14 @@ export default function LoggedIn() {
           tabBarIcon: ({focused}) => <Icon name="safe" active={focused} />,
         }}
       />
-      <Tab.Screen
-        component={CreateNewItem}
-        name="1"
-        options={{
-          headerTitle: 'Foo',
-          tabBarLabel: 'Favoritos',
-          tabBarIcon: ({focused}) => <Icon name="heart-outline" active={focused} />,
-        }}
-      />
+
       <Tab.Screen
         component={CreateNewItem}
         name="CreateNewItem"
         options={{
           headerTitle: 'Novo item',
-          tabBarLabel: '',
-          tabBarIcon: ({focused}) => <Icon name="plus" main active={focused} />,
-        }}
-      />
-      <Tab.Screen
-        component={CreateNewItem}
-        name="4"
-        options={{
-          headerTitle: 'Novo item',
-          tabBarLabel: 'Ajuda',
-          tabBarIcon: ({focused}) => <Icon name="help-circle-outline" active={focused} />,
-        }}
-      />
-      <Tab.Screen
-        component={CreateNewItem}
-        name="5"
-        options={{
-          headerTitle: 'Novo item',
-          tabBarLabel: 'Perfil',
-          tabBarIcon: ({focused}) => <Icon name="account-settings-outline" active={focused} />,
+          tabBarLabel: 'Favoritos',
+          tabBarIcon: ({focused}) => <Icon name="heart-outline" active={focused} />,
         }}
       />
     </Tab.Navigator>
