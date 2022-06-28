@@ -5,6 +5,7 @@ import {Dispatch, useReducer} from 'react';
 import {ToastAndroid} from 'react-native';
 
 const initialState = {
+  id: 1,
   title: '',
   username: '',
   email: '',
