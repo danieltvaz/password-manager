@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import useAutentication from 'app/hooks/useAutentication';
-import {NavigationHook} from 'app/types/navigation';
+import {RootNavigationHook} from 'app/types/navigation';
 import {useState} from 'react';
 
 export default function useRecoverPassword(props: any) {
@@ -8,13 +8,14 @@ export default function useRecoverPassword(props: any) {
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
   const [newPasswordInput, setNewPasswordInput] = useState('');
 
-  const {autentication, verifySecretAnswer, setNewPassword} =
-    useAutentication();
+  const {autentication, verifySecretAnswer, setNewPassword} = useAutentication();
 
-  const {navigate} = useNavigation<NavigationHook>();
+  const {navigate} = useNavigation<RootNavigationHook>();
 
   const handleVerify = () => {
-    if (verifySecretAnswer(secretAnswerInput)) setIsCorrectAnswer(true);
+    if (verifySecretAnswer(secretAnswerInput)) {
+      setIsCorrectAnswer(true);
+    }
   };
 
   const saveNewPassword = () => {

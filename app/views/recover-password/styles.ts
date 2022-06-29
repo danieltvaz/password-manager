@@ -4,6 +4,8 @@ export const MainWrapper = styled.View`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: ${({theme}) => theme.background.primary};
+  padding: 0 10px;
 `;
 
 export const InputWrapper = styled.View`

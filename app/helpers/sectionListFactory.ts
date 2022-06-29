@@ -1,26 +1,32 @@
-import {dataMock} from 'app/views/dashboard/dashboard.comp';
+import {PasswordStorage} from 'app/hooks/useVault';
 
-type Data = typeof dataMock;
-
-export default function sectionListFactory(data: Data) {
-  const availableLetters = Array.from(
-    new Set(data.map(dataItem => dataItem.service.name[0].toLowerCase())),
-  );
-  const sections = availableLetters
-    .map(letter => ({
-      letter: letter.toUpperCase(),
-      data: [],
-    }))
-    .map(sectionItem => ({
-      ...sectionItem,
-      data: [
-        ...data.filter(
-          dataItem =>
-            dataItem.service.name[0].toUpperCase() ===
-            sectionItem.letter.toUpperCase(),
-        ),
-      ],
-    }));
-
-  return sections;
+export default function sectionListFactory(data: PasswordStorage[]) {
+  try {
+    const availableLetters = Array.from(
+      new Set(data?.map(dataItem => dataItem.title[0].toLowerCase())),
+    );
+    const sections = availableLetters
+      .map(letter => ({
+        letter: letter.toUpperCase(),
+        data: [],
+      }))
+      .map(sectionItem => ({
+        ...sectionItem,
+        data: [
+          ...data.filter(
+            dataItem => dataItem.title[0].toUpperCase() === sectionItem.letter.toUpperCase(),
+          ),
+        ],
+      }))
+      .sort((a, b) => {
+        if (a.letter.toUpperCase() > b.letter.toUpperCase()) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+    return sections;
+  } catch {
+    return [];
+  }
 }

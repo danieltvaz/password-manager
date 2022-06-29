@@ -8,5 +8,5 @@ type Props = {
 };
 
 export default function TextInput(props: Props & TextInputProps) {
-  return <StyledTextInput {...props} inlineImagePadding={30} />;
+  return <StyledTextInput {...props} inlineImagePadding={30} caretHidden={true} />;
 }
