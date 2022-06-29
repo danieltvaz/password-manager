@@ -1,22 +1,30 @@
-import React, {useEffect} from 'react';
+import React, {useLayoutEffect} from 'react';
 import TextInput from 'app/components/dumb/text-input';
 import * as Styled from './styles';
 import {NewItemFormProps} from './create-new-item.hook';
 import SButton from 'app/components/dumb/button';
+import {useTheme} from 'styled-components/native';
 
 export default function CreateNewItem({
   state,
   dispatch,
   handleSubmit,
   navigation,
+  params,
+  edit,
+  handleEdit,
 }: NewItemFormProps) {
-  useEffect(() => {
+  const theme = useTheme();
+
+  useLayoutEffect(() => {
     navigation.setOptions({
+      headerTitle: params?.role === 'edit' ? `${params.item?.title}` : 'Novo item',
+      headerStyle: {backgroundColor: edit ? theme.pallet.warning : theme.background.active},
       headerRight: () => (
         <SButton
-          title="Salvar"
-          onPress={handleSubmit}
-          buttonRole="primary"
+          title={params?.role === 'edit' && !edit ? 'Editar' : 'Salvar'}
+          onPress={params?.role === 'edit' ? handleEdit : handleSubmit}
+          buttonRole={edit ? 'warning' : 'primary'}
           style={{marginRight: 10}}
         />
       ),
@@ -31,6 +39,7 @@ export default function CreateNewItem({
           onChangeText={value => dispatch({type: 'title', payload: value})}
           value={state.title}
           autoFocus
+          editable={params?.role === 'new' || edit ? true : false}
         />
       </Styled.InputWrapper>
       <Styled.InputWrapper>
@@ -38,6 +47,7 @@ export default function CreateNewItem({
         <TextInput
           onChangeText={value => dispatch({type: 'username', payload: value})}
           value={state.username}
+          editable={params?.role === 'new' || edit ? true : false}
         />
       </Styled.InputWrapper>
       <Styled.InputWrapper>
@@ -46,6 +56,7 @@ export default function CreateNewItem({
           onChangeText={value => dispatch({type: 'email', payload: value})}
           value={state.email}
           keyboardType="email-address"
+          editable={params?.role === 'new' || edit ? true : false}
         />
       </Styled.InputWrapper>
       <Styled.InputWrapper>
@@ -54,6 +65,7 @@ export default function CreateNewItem({
           onChangeText={value => dispatch({type: 'password', payload: value})}
           value={state.password}
           secureTextEntry
+          editable={params?.role === 'new' || edit ? true : false}
         />
       </Styled.InputWrapper>
       <Styled.InputWrapper>
@@ -62,6 +74,7 @@ export default function CreateNewItem({
           onChangeText={value => dispatch({type: 'site', payload: value})}
           value={state.site}
           keyboardType="url"
+          editable={params?.role === 'new' || edit ? true : false}
         />
       </Styled.InputWrapper>
       <Styled.InputWrapper>
@@ -69,6 +82,7 @@ export default function CreateNewItem({
         <TextInput
           onChangeText={value => dispatch({type: 'securityQuestion', payload: value})}
           value={state.securityQuestion}
+          editable={params?.role === 'new' || edit ? true : false}
         />
       </Styled.InputWrapper>
       <Styled.InputWrapper>
@@ -76,6 +90,7 @@ export default function CreateNewItem({
         <TextInput
           onChangeText={value => dispatch({type: 'securityAnswer', payload: value})}
           value={state.securityAnswer}
+          editable={params?.role === 'new' || edit ? true : false}
         />
       </Styled.InputWrapper>
       <Styled.InputWrapper>

@@ -1,4 +1,5 @@
 import {NativeStackNavigationProp, NativeStackScreenProps} from '@react-navigation/native-stack';
+import {PasswordStorage} from 'app/hooks/useVault';
 
 export type RootStackParamList = {
   Signin: undefined;
@@ -15,7 +16,7 @@ export type RootRoutes = keyof RootStackParamList;
 
 export type LoggedInStackParamList = {
   Vault: undefined;
-  CreateNewItem: undefined;
+  CreateNewItem: {item?: PasswordStorage; role?: 'new' | 'edit'} | undefined;
 };
 
 export type SignedInNavigationHook = NativeStackNavigationProp<LoggedInStackParamList>;

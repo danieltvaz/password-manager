@@ -17,7 +17,7 @@ export default function Passwords({passwords, navigation}: PasswordProps) {
         <SButton
           title="Novo item"
           buttonRole="primary"
-          onPress={() => navigation.navigate('CreateNewItem')}
+          onPress={() => navigation.navigate('CreateNewItem', {role: 'new'})}
         />
       ),
     });
@@ -27,7 +27,12 @@ export default function Passwords({passwords, navigation}: PasswordProps) {
     <Styled.Wrapper>
       <SectionList
         sections={sectionListFactory(passwords)}
-        renderItem={({item}) => <PasswordItem item={item} />}
+        renderItem={({item}) => (
+          <PasswordItem
+            item={item}
+            onPress={() => navigation.navigate('CreateNewItem', {item: {...item}, role: 'edit'})}
+          />
+        )}
         renderSectionHeader={({section: {letter}}) => (
           <Styled.SectionHeaderWrapper>
             <Styled.SectionHeaderText>{letter}</Styled.SectionHeaderText>

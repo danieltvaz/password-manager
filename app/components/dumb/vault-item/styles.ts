@@ -1,7 +1,7 @@
 import {Dimensions} from 'react-native';
 import styled from 'styled-components/native';
 
-export const MainWrapper = styled.View`
+export const PressableWrapper = styled.Pressable`
   max-width: 100%;
   height: 50px;
   display: flex;

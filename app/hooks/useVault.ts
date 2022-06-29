@@ -26,5 +26,13 @@ export default function useVault() {
     setPasswords([...(passwords ? passwords : []), {...password, id: generateUniqueId()}]);
   }
 
-  return {newPassword, passwords};
+  function editPassword(password: PasswordStorage) {
+    const newPassword = passwords?.map(oldPassword =>
+      oldPassword.id === password.id ? {...oldPassword, ...password} : oldPassword,
+    ) as PasswordStorage[];
+
+    setPasswords(newPassword);
+  }
+
+  return {newPassword, editPassword, passwords};
 }

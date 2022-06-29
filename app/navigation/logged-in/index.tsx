@@ -4,6 +4,7 @@ import Vault from 'app/views/vault';
 import CreateNewItem from 'app/views/create-new-item';
 import Icon from 'app/components/dumb/bottom-tab-icon';
 import {useTheme} from 'styled-components/native';
+import VaultItemVisualization from 'app/views/vault-item-visualization';
 
 export default function LoggedIn() {
   const Tab = createBottomTabNavigator();
@@ -23,14 +24,13 @@ export default function LoggedIn() {
         headerTintColor: theme.text.inverted,
         tabBarStyle: {
           backgroundColor: theme.background.secondary,
-          position: 'absolute',
         },
         tabBarLabelStyle: {
           fontSize: 12,
         },
       }}
       tabBar={props => (
-        <BottomTabBar {...props} state={{...props.state, routes: props.state.routes.slice(0, 2)}} />
+        <BottomTabBar {...props} state={{...props.state, routes: props.state.routes.slice(0, 1)}} />
       )}>
       <Tab.Screen
         component={Vault}
@@ -48,6 +48,16 @@ export default function LoggedIn() {
         options={{
           headerTitle: 'Novo item',
           tabBarLabel: 'Favoritos',
+          tabBarIcon: ({focused}) => <Icon name="heart-outline" active={focused} />,
+          unmountOnBlur: true,
+        }}
+      />
+      <Tab.Screen
+        component={VaultItemVisualization}
+        name="VaultItemVisualization"
+        options={{
+          headerTitle: 'Novo item',
+          tabBarLabel: 'Item',
           tabBarIcon: ({focused}) => <Icon name="heart-outline" active={focused} />,
         }}
       />
