@@ -1,3 +1,3 @@
-export default function usePasswordItem(props) {
+export default function usePasswordItem(props: any) {
   return {...props};
 }
