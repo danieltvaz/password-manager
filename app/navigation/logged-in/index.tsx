@@ -4,7 +4,6 @@ import Vault from 'app/views/vault';
 import CreateNewItem from 'app/views/create-new-item';
 import Icon from 'app/components/dumb/bottom-tab-icon';
 import {useTheme} from 'styled-components/native';
-import VaultItemVisualization from 'app/views/vault-item-visualization';
 
 export default function LoggedIn() {
   const Tab = createBottomTabNavigator();
@@ -13,7 +12,7 @@ export default function LoggedIn() {
   return (
     <Tab.Navigator
       initialRouteName="Passwords"
-      screenOptions={{
+      screenOptions={({route}) => ({
         headerShown: true,
         headerStyle: {
           backgroundColor: theme.background.active,
@@ -28,10 +27,8 @@ export default function LoggedIn() {
         tabBarLabelStyle: {
           fontSize: 12,
         },
-      }}
-      tabBar={props => (
-        <BottomTabBar {...props} state={{...props.state, routes: props.state.routes.slice(0, 1)}} />
-      )}>
+        tabBarButton: ['CreateNewItem'].includes(route.name) ? () => null : undefined,
+      })}>
       <Tab.Screen
         component={Vault}
         name="Vault"
@@ -47,18 +44,9 @@ export default function LoggedIn() {
         name="CreateNewItem"
         options={{
           headerTitle: 'Novo item',
-          tabBarLabel: 'Favoritos',
+          tabBarLabel: 'Novo item',
           tabBarIcon: ({focused}) => <Icon name="heart-outline" active={focused} />,
           unmountOnBlur: true,
-        }}
-      />
-      <Tab.Screen
-        component={VaultItemVisualization}
-        name="VaultItemVisualization"
-        options={{
-          headerTitle: 'Novo item',
-          tabBarLabel: 'Item',
-          tabBarIcon: ({focused}) => <Icon name="heart-outline" active={focused} />,
         }}
       />
     </Tab.Navigator>
