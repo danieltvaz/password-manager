@@ -59,6 +59,7 @@ export default function useCreateNewItem() {
     if (edit) {
       editPassword({...state});
       navigation.navigate('Vault');
+      ToastAndroid.show('Item salvo.', 5000);
     } else {
       setEdit(true);
     }
@@ -67,7 +68,7 @@ export default function useCreateNewItem() {
   function handleAdd() {
     newPassword(state);
     navigation.navigate('Vault');
-    ToastAndroid.show('Sucesso.', 5000);
+    ToastAndroid.show('Item adicionado.', 5000);
   }
 
   return {state, dispatch, handleSubmit, navigation, params, edit, handleEdit};

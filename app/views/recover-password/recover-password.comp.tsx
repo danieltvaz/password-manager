@@ -26,13 +26,12 @@ export default function RecoverPassword({
               placeholder="Digite sua nova senha"
               onChangeText={newValue => setNewPasswordInput(newValue)}
               value={newPasswordInput}
-              inlineImageLeft="lock"
               secureTextEntry
               onEndEditing={saveNewPassword}
             />
           </InputWrapper>
           <InputWrapper>
-            <SButton role="primary" title="Salvar" onPress={saveNewPassword} />
+            <SButton buttonRole="primary" title="Salvar" onPress={saveNewPassword} />
           </InputWrapper>
         </>
       ) : (
@@ -50,7 +49,7 @@ export default function RecoverPassword({
             />
           </InputWrapper>
           <InputWrapper>
-            <SButton role="primary" title="Verificar" onPress={handleVerify} />
+            <SButton buttonRole="primary" title="Verificar" onPress={handleVerify} />
           </InputWrapper>
         </>
       )}
