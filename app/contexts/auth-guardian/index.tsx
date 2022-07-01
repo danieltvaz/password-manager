@@ -1,10 +1,13 @@
-import React, {createContext, ReactNode, useEffect, useRef, useState} from 'react';
+import React, {createContext, ReactNode, useContext, useEffect, useRef, useState} from 'react';
 import useAutentication from 'app/hooks/useAutentication';
 import {AuthContextType} from './types';
 import {AppState} from 'react-native';
-import {LogoText} from 'app/components/dumb/service-logo/styles';
 
 export const AuthContext = createContext<AuthContextType>({logged: false} as AuthContextType);
+
+export function useAuthContext() {
+  return useContext(AuthContext);
+}
 
 export default function AuthGuardian({children}: {children: ReactNode}) {
   const [logged, setLogged] = useState(false);
