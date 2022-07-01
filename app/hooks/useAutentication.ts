@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import {UserSecurityInfo} from 'app/types/autentication';
 import {RootNavigationHook} from 'app/types/navigation';
+import {useCallback} from 'react';
 import {Alert, ToastAndroid} from 'react-native';
 import useStorage from './useStorage';
 
@@ -15,7 +16,10 @@ export default function useAutentication() {
   const verifySecretAnswer = (userAnswer: string) =>
     userAnswer.toLowerCase() === autentication?.secretAnswer?.toLocaleLowerCase() ? true : false;
 
-  const alreadyRegistered = () => (autentication?.password ? true : false);
+  const alreadyRegistered = useCallback(
+    () => (autentication?.password ? true : false),
+    [autentication?.password],
+  );
 
   const registration = (registrationValues: UserSecurityInfo) => {
     const formValuesKeys = Object.keys(registrationValues) as (keyof typeof registrationValues)[];
