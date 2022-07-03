@@ -1,25 +1,35 @@
+import {PasswordStorage} from 'app/hooks/useVault';
 import sectionListFactory from '../sectionListFactory';
+
+type SectionListFactory = {
+  data: PasswordStorage[];
+  letter: string;
+}[];
 
 describe('sectionListFactory', () => {
   it('should return 2 objects only containing letters A and B', () => {
-    const result = sectionListFactory([
+    const result: SectionListFactory = sectionListFactory([
       {
+        email: '1@email.com',
         id: 1,
-        password: '123',
-        login: 'login',
-        service: {name: 'ab', website: 'www.test.com'},
+        observations: '',
+        password: '',
+        securityAnswer: '',
+        securityQuestion: '',
+        site: '',
+        title: 'a',
+        username: '',
       },
       {
+        email: '2@email.com',
         id: 2,
-        password: '123',
-        login: 'login',
-        service: {name: 'ba', website: 'www.test.com'},
-      },
-      {
-        id: 3,
-        password: '123',
-        login: 'login',
-        service: {name: 'aa', website: 'www.test.com'},
+        observations: '',
+        password: '',
+        securityAnswer: '',
+        securityQuestion: '',
+        site: '',
+        title: 'b',
+        username: '',
       },
     ]);
 
@@ -28,16 +38,15 @@ describe('sectionListFactory', () => {
         letter: 'A',
         data: [
           {
+            email: '1@email.com',
             id: 1,
-            password: '123',
-            login: 'login',
-            service: {name: 'ab', website: 'www.test.com'},
-          },
-          {
-            id: 3,
-            password: '123',
-            login: 'login',
-            service: {name: 'aa', website: 'www.test.com'},
+            observations: '',
+            password: '',
+            securityAnswer: '',
+            securityQuestion: '',
+            site: '',
+            title: 'a',
+            username: '',
           },
         ],
       },
@@ -45,13 +54,24 @@ describe('sectionListFactory', () => {
         letter: 'B',
         data: [
           {
+            email: '2@email.com',
             id: 2,
-            password: '123',
-            login: 'login',
-            service: {name: 'ba', website: 'www.test.com'},
+            observations: '',
+            password: '',
+            securityAnswer: '',
+            securityQuestion: '',
+            site: '',
+            title: 'b',
+            username: '',
           },
         ],
       },
     ]);
+  });
+
+  it('should return [] if passed data is any invalid data', () => {
+    const result: SectionListFactory = sectionListFactory(undefined as any);
+
+    expect(result).toStrictEqual([]);
   });
 });
