@@ -1,30 +1,31 @@
-import {useNavigation} from '@react-navigation/native';
+import {NavigationProp} from '@react-navigation/native';
 import useAutentication from 'app/hooks/useAutentication';
-import {RootNavigationHook} from 'app/types/navigation';
+import {RootStackParamList} from 'app/types/navigation';
 import {useState} from 'react';
 
-export default function useRecoverPassword(props: any) {
+type UseRecoverPasswordProps = {
+  navigation: NavigationProp<RootStackParamList, 'RecoverPassword'>;
+};
+
+export default function useRecoverPassword({navigation}: UseRecoverPasswordProps) {
   const [secretAnswerInput, setSecretAnswerInput] = useState('');
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
   const [newPasswordInput, setNewPasswordInput] = useState('');
 
   const {autentication, verifySecretAnswer, setNewPassword} = useAutentication();
 
-  const {navigate} = useNavigation<RootNavigationHook>();
-
-  const handleVerify = () => {
+  function handleVerify() {
     if (verifySecretAnswer(secretAnswerInput)) {
       setIsCorrectAnswer(true);
     }
-  };
+  }
 
-  const saveNewPassword = () => {
+  function saveNewPassword() {
     setNewPassword(newPasswordInput);
-    navigate('Signin');
-  };
+    navigation.navigate('Signin');
+  }
 
   return {
-    ...props,
     secretAnswerInput,
     setSecretAnswerInput,
     autentication,

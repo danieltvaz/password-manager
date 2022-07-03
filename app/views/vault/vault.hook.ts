@@ -1,15 +1,18 @@
-import {useNavigation} from '@react-navigation/native';
+import {NavigationProp} from '@react-navigation/native';
 import useVault, {PasswordStorage} from 'app/hooks/useVault';
-import {SignedInNavigationHook} from 'app/types/navigation';
+import {LoggedInStackParamList, SignedInNavigationHook} from 'app/types/navigation';
 
 export type PasswordProps = {
   navigation: SignedInNavigationHook;
   passwords: PasswordStorage[];
 };
 
-export default function usePasswords(props: any) {
-  const navigation = useNavigation();
+type UsePasswords = {
+  navigation: NavigationProp<LoggedInStackParamList, 'Vault'>;
+};
+
+export default function usePasswords({navigation}: UsePasswords) {
   const {passwords} = useVault();
 
-  return {...props, navigation, passwords};
+  return {navigation, passwords};
 }

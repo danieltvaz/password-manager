@@ -1,40 +1,35 @@
-import {useNavigation} from '@react-navigation/native';
-import {AuthContext} from 'app/contexts/auth-guardian';
+import {useAuthContext} from 'app/contexts/auth-guardian';
 import useAutentication from 'app/hooks/useAutentication';
-import {RootNavigationHook} from 'app/types/navigation';
-import {useContext, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useTheme} from 'styled-components/native';
-import {SigninProps} from './types';
+import {UseSignin} from './types';
 
-export default function useSignin(props: SigninProps) {
+export default function useSignin({navigation}: UseSignin) {
   const [inputPassword, setInputPassword] = useState('');
+
+  const theme = useTheme();
+
+  const {login} = useAuthContext();
+
+  const {alreadyRegistered} = useAutentication();
+
+  const handleOnPressSignup = () => navigation.navigate('CreatePassword');
 
   const handlePasswordInput = (value: string) => {
     setInputPassword(value);
   };
 
-  const {navigate} = useNavigation<RootNavigationHook>();
-
-  const theme = useTheme();
-
-  const {login} = useContext(AuthContext);
-
-  const handleOnPressSignup = () => navigate('CreatePassword');
-
-  const {alreadyRegistered} = useAutentication();
-
   useEffect(() => {
-    alreadyRegistered() ? null : navigate('CreatePassword');
-  }, [alreadyRegistered, navigate]);
+    if (alreadyRegistered()) return;
+    navigation.navigate('CreatePassword');
+  }, []);
 
   return {
-    ...props,
     handleOnPressSignup,
     theme,
     alreadyRegistered,
     inputPassword,
     handlePasswordInput,
-    navigate,
     login,
   };
 }

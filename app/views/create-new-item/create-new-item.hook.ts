@@ -1,4 +1,4 @@
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {NavigationProp, RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import useVault, {PasswordStorage} from 'app/hooks/useVault';
 import {LoggedInStackParamList, SignedInNavigationHook} from 'app/types/navigation';
 import {Dispatch, useReducer, useState} from 'react';
@@ -33,18 +33,20 @@ export type NewItemFormProps = {
   handleEdit: () => void;
 };
 
-export default function useCreateNewItem() {
-  const {params}: {params?: LoggedInStackParamList['CreateNewItem']} = useRoute();
-
-  const navigation = useNavigation<SignedInNavigationHook>();
-
+export default function useCreateNewItem({
+  route,
+  navigation,
+}: {
+  route: RouteProp<LoggedInStackParamList, 'CreateNewItem'>;
+  navigation: NavigationProp<LoggedInStackParamList>;
+}) {
   function reducer(state: State, action: Action): State {
     return {...state, [action.type]: action.payload};
   }
 
   const [state, dispatch] = useReducer(
     reducer,
-    params?.role === 'edit' ? params.item! : initialState,
+    route.params?.role === 'edit' ? route.params.item! : initialState,
   );
 
   const [edit, setEdit] = useState(false);
@@ -52,7 +54,7 @@ export default function useCreateNewItem() {
   const {newPassword, editPassword} = useVault();
 
   function handleSubmit() {
-    params?.role === 'edit' && edit ? handleEdit() : handleAdd();
+    route.params?.role === 'edit' && edit ? handleEdit() : handleAdd();
   }
 
   function handleEdit() {
@@ -71,5 +73,13 @@ export default function useCreateNewItem() {
     ToastAndroid.show('Item adicionado.', 5000);
   }
 
-  return {state, dispatch, handleSubmit, navigation, params, edit, handleEdit};
+  return {
+    state,
+    dispatch,
+    handleSubmit,
+    navigation,
+    params: route.params,
+    edit,
+    handleEdit,
+  };
 }

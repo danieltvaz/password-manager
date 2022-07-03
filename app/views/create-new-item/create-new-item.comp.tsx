@@ -40,6 +40,7 @@ export default function CreateNewItem({
           value={state.title}
           autoFocus
           editable={params?.role === 'new' || edit ? true : false}
+          testID="titleInput"
         />
       </Styled.InputWrapper>
       <Styled.InputWrapper>
